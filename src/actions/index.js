@@ -13,3 +13,9 @@ export const deleteShop = (id) => {
     id,
   };
 };
+export const deleteAllShop = (id) => {
+  return {
+    type: "DELETEALLSHOP",
+    id,
+  };
+};

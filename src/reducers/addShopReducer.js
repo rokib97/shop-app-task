@@ -22,6 +22,12 @@ const shopReducer = (state = initialData, action) => {
         ...state,
         list: newList,
       };
+
+    case "DELETEALLSHOP":
+      return {
+        ...state,
+        list: [],
+      };
     default:
       return state;
   }

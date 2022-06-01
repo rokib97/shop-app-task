@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { addToShop } from "../actions";
+import { addToShop, deleteAllShop } from "../actions";
 import Shop from "./Shop";
 
 const AddShop = () => {
@@ -173,7 +173,7 @@ const AddShop = () => {
                 </label>
               </div>
               <input
-                className="btn w-full max-w-xs text-white"
+                className="btn btn-primary w-full max-w-xs text-white"
                 type="submit"
                 value="add"
               />
@@ -182,6 +182,26 @@ const AddShop = () => {
         </div>
         <div class="card-body">
           <h2 class="card-title font-bold text-2xl">List Of All Shops</h2>
+          <h2 className="text-xl font-bold">Filter By</h2>
+          <div>
+            <select class="select select-primary w-full max-w-xs m-2">
+              <option>Grocery</option>
+              <option>Butcher</option>
+              <option>Baker</option>
+              <option>Chemist</option>
+              <option>Nagpur</option>
+              <option>Stationery shop</option>
+            </select>
+            <select class="select select-primary w-full max-w-xs">
+              <option>Thane</option>
+              <option>Pune</option>
+              <option>Mumbai Suburban</option>
+              <option>Nashik</option>
+              <option>Nagpur</option>
+              <option>Ahmednagar</option>
+              <option>Solapur</option>
+            </select>
+          </div>
           <div class="overflow-x-auto">
             <table class="table w-full">
               <thead>
@@ -206,6 +226,15 @@ const AddShop = () => {
                 ))}
               </tbody>
             </table>
+          </div>
+          <div class="card-actions justify-end">
+            <button
+              onClick={() => dispatch(deleteAllShop())}
+              disabled={list.length === 0}
+              class="btn btn-primary text-white "
+            >
+              Delete All
+            </button>
           </div>
         </div>
       </div>

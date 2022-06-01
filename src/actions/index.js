@@ -13,6 +13,13 @@ export const deleteShop = (id) => {
     id,
   };
 };
+export const categoryFilter = (category) => {
+  return {
+    type: "CATEGORYFILTER",
+    category,
+  };
+};
+
 export const deleteAllShop = (id) => {
   return {
     type: "DELETEALLSHOP",

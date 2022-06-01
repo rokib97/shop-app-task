@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteShop } from "../actions";
+import UpdateModal from "./UpdateModal";
 
 const Shop = ({ shop, index, id }) => {
   const dispatch = useDispatch();
@@ -22,7 +23,16 @@ const Shop = ({ shop, index, id }) => {
             Delete
           </button>
         </td>
+        <td>
+          <label
+            htmlFor="update-modal"
+            className="btn btn-xs btn-success text-white text-bold"
+          >
+            Update
+          </label>
+        </td>
       </tr>
+      <UpdateModal />
     </>
   );
 };

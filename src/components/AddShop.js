@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { addToShop, deleteAllShop } from "../actions";
+import { addToShop, categoryFilter, deleteAllShop } from "../actions";
 import Shop from "./Shop";
 
 const AddShop = () => {
@@ -19,6 +19,10 @@ const AddShop = () => {
   } = useForm();
   const onSubmit = (data) => {
     dispatch(addToShop(data));
+  };
+  const handleCategory = (event) => {
+    const category = event.target.value;
+    dispatch(categoryFilter(category));
   };
 
   return (
@@ -40,7 +44,7 @@ const AddShop = () => {
                     },
                     pattern: {
                       value: /^[A-Za-z]+$/,
-                      message: "Only Alphabets",
+                      message: "Input Only Alphabets Without Space",
                     },
                   })}
                   type="text"
@@ -110,7 +114,6 @@ const AddShop = () => {
                   <option>Butcher</option>
                   <option>Baker</option>
                   <option>Chemist</option>
-                  <option>Nagpur</option>
                   <option>Stationery shop</option>
                 </select>
                 <label className="label">
@@ -184,12 +187,14 @@ const AddShop = () => {
           <h2 class="card-title font-bold text-2xl">List Of All Shops</h2>
           <h2 className="text-xl font-bold">Filter By</h2>
           <div>
-            <select class="select select-primary w-full max-w-xs m-2">
+            <select
+              onBlur={handleCategory}
+              class="select select-primary w-full max-w-xs m-2"
+            >
               <option>Grocery</option>
               <option>Butcher</option>
               <option>Baker</option>
               <option>Chemist</option>
-              <option>Nagpur</option>
               <option>Stationery shop</option>
             </select>
             <select class="select select-primary w-full max-w-xs">
@@ -212,6 +217,7 @@ const AddShop = () => {
                   <th>Category</th>
                   <th>Opening Date</th>
                   <th>Closing Date</th>
+                  <th>Action</th>
                   <th>Action</th>
                 </tr>
               </thead>

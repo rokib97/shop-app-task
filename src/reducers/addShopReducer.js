@@ -15,12 +15,18 @@ const shopReducer = (state = initialData, action) => {
           },
         ],
       };
-
     case "DELETESHOP":
       const newList = state.list.filter((shop) => shop.id !== action.id);
       return {
         ...state,
         list: newList,
+      };
+    case "CATEGORYFILTER":
+      const categoryList = state.list.filter(
+        (shop) => shop.data.category === action.category
+      );
+      return {
+        list: categoryList,
       };
 
     case "DELETEALLSHOP":

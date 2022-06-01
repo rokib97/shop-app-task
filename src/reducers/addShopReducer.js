@@ -3,7 +3,7 @@ const initialData = {
 };
 const shopReducer = (state = initialData, action) => {
   switch (action.type) {
-    case "addToShop":
+    case "ADDSHOP":
       const { id, data } = action.payload;
       return {
         ...state,
@@ -14,6 +14,13 @@ const shopReducer = (state = initialData, action) => {
             data: data,
           },
         ],
+      };
+
+    case "DELETESHOP":
+      const newList = state.list.filter((shop) => shop.id !== action.id);
+      return {
+        ...state,
+        list: newList,
       };
     default:
       return state;

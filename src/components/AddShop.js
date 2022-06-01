@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToShop } from "../actions";
+import Shop from "./Shop";
 
 const AddShop = () => {
+  const list = useSelector((state) => state.shopReducer.list);
   const dispatch = useDispatch();
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [closingDate, setClosingDate] = useState(
@@ -179,10 +181,31 @@ const AddShop = () => {
           </div>
         </div>
         <div class="card-body">
-          <h2 class="card-title">New album is released!</h2>
-          <p>Click the button to listen on Spotiwhy app.</p>
-          <div class="card-actions justify-end">
-            <button class="btn btn-primary">Listen</button>
+          <h2 class="card-title font-bold text-2xl">List Of All Shops</h2>
+          <div class="overflow-x-auto">
+            <table class="table w-full">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Name</th>
+                  <th>Area</th>
+                  <th>Category</th>
+                  <th>Opening Date</th>
+                  <th>Closing Date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {list.map((shop, index) => (
+                  <Shop
+                    key={shop.id}
+                    shop={shop.data}
+                    index={index}
+                    id={shop.id}
+                  />
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

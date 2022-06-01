@@ -7,3 +7,9 @@ export const addToShop = (data) => {
     },
   };
 };
+export const deleteShop = (id) => {
+  return {
+    type: "DELETESHOP",
+    id,
+  };
+};

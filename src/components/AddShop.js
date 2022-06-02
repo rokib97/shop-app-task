@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { addToShop, categoryFilter, deleteAllShop } from "../actions";
+import {
+  addToShop,
+  areaFilter,
+  categoryFilter,
+  deleteAllShop,
+} from "../actions";
 import Shop from "./Shop";
 
 const AddShop = () => {
@@ -23,6 +28,10 @@ const AddShop = () => {
   const handleCategory = (event) => {
     const category = event.target.value;
     dispatch(categoryFilter(category));
+  };
+  const handleArea = (event) => {
+    const area = event.target.value;
+    dispatch(areaFilter(area));
   };
 
   return (
@@ -197,7 +206,10 @@ const AddShop = () => {
               <option>Chemist</option>
               <option>Stationery shop</option>
             </select>
-            <select class="select select-primary w-full max-w-xs">
+            <select
+              onChange={handleArea}
+              class="select select-primary w-full max-w-xs"
+            >
               <option>Thane</option>
               <option>Pune</option>
               <option>Mumbai Suburban</option>

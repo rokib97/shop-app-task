@@ -19,6 +19,12 @@ export const categoryFilter = (category) => {
     category,
   };
 };
+export const areaFilter = (area) => {
+  return {
+    type: "AREAFILTER",
+    area,
+  };
+};
 
 export const deleteAllShop = (id) => {
   return {

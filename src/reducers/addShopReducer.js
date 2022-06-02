@@ -26,7 +26,17 @@ const shopReducer = (state = initialData, action) => {
         (shop) => shop.data.category === action.category
       );
       return {
+        ...state,
         list: categoryList,
+      };
+
+    case "AREAFILTER":
+      const areaList = state.list.filter(
+        (shop) => shop.data.area === action.area
+      );
+      return {
+        ...state,
+        list: areaList,
       };
 
     case "DELETEALLSHOP":

@@ -188,7 +188,7 @@ const AddShop = () => {
           <h2 className="text-xl font-bold">Filter By</h2>
           <div>
             <select
-              onBlur={handleCategory}
+              onChange={handleCategory}
               class="select select-primary w-full max-w-xs m-2"
             >
               <option>Grocery</option>
